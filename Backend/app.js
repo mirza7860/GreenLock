@@ -8,7 +8,7 @@ const port = 6000;
 app.use(express.json());
 
 // Load the trained model
-const modelPath = "http://localhost:8000/uploads/model.json";
+const modelPath = "https://greenlock.onrender.com/uploads/model.json";
 const loadModel = async () => {
   const model = await tf.loadLayersModel(modelPath);
   return model;
@@ -34,20 +34,17 @@ function convertToTFIDF(tokenizedEmail) {
 // Endpoint to receive email data
 app.post("/predict", async (req, res) => {
   try {
-    // Receive email data here (assuming it's in req.body.email)
     const emailContent = req.body.email;
 
-    // Preprocess the email data
     const tokenizedEmail = tokenizeEmail(emailContent);
     const emailTensor = convertToTFIDF(tokenizedEmail);
 
-    // Load the trained model
+
     const model = await loadModel();
 
-    // Make predictions using the model
     const predictions = model.predict(emailTensor);
 
-    // Extract prediction and confidence score
+
     const confidenceScore = predictions.dataSync()[0];
     const isPhishing = confidenceScore > 0.5;
 
@@ -62,7 +59,6 @@ app.post("/predict", async (req, res) => {
       intensityLevel = "Safe";
     }
 
-    // Send back the prediction and confidence score
     res.json({ isPhishing, confidenceScore, intensityLevel });
   } catch (error) {
     console.error("Prediction error:", error);
