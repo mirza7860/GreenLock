@@ -1,0 +1,22 @@
+{
+  "name": "phishing-detector-api",
+  "version": "1.0.0",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "train": "node train_model.js",
+    "prepare-data": "node prepare_data.js"
+  },
+  "author": "Mirza Sahil Alli Baig",
+  "license": "ISC",
+  "description": "A phishing email API using TensorFlow.js",
+  "dependencies": {
+    "@tensorflow/tfjs": "^4.19.0",
+    "body-parser": "^1.20.2",
+    "csv-parser": "^3.0.0",
+    "express": "^4.19.2",
+    "natural": "^7.0.6"
+  }
+}
