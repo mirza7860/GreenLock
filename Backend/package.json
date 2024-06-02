@@ -15,6 +15,7 @@
   "dependencies": {
     "@tensorflow/tfjs": "^4.19.0",
     "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
     "csv-parser": "^3.0.0",
     "express": "^4.19.2",
     "natural": "^7.0.6"

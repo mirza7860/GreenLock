@@ -5,8 +5,9 @@ import natural from "natural";
 const app = express();
 const port = 3000;
 
+// configuration
 app.use(express.json());
-
+app.use(cors())
 // Load the trained model
 const modelPath = "https://greenlock.onrender.com/uploads/model.json";
 const loadModel = async () => {
